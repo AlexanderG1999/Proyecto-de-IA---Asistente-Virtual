@@ -8,7 +8,6 @@ def listen(listener, nameAV):
             pc = listener.listen(source)
             rec = listener.recognize_google(pc)
             rec = rec.lower()
-            
             if nameAV in rec:
                 rec = rec.replace(nameAV, '')
     except:
