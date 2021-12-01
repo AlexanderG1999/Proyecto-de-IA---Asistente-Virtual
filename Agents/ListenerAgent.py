@@ -12,5 +12,4 @@ def listen(listener, nameAV):
                 rec = rec.replace(nameAV, '')
     except:
         pass
-    
     return rec
