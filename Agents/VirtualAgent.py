@@ -5,7 +5,7 @@ import Agents.TalkerAgent
 
 # Agente virtual
 def runJuan(listener, name, engine):
-    rec = Agents.ListenerAgent.listen(listener, name)
+    rec = Agents.ListenerAgent.listen(listener, name,engine)
     if 'reproduce' in rec:
         music = rec.replace('reproduce', '')
         print("Reproduciendo " + music)
