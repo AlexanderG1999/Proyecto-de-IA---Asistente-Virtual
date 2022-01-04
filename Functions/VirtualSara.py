@@ -11,8 +11,17 @@ programs = {
     'whatsapp': "C:/Users/ASUS/AppData/Local/WhatsApp/WhatsApp.exe"
 }
 
+"""programs = {
+    'telegram': "C:/Users/ASUS/AppData/Roaming/Telegram Desktop/Telegram.exe",
+    'Microsoft Word': "C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE",
+    'onenote': "C:/Program Files/Microsoft Office/root/Office16/ONENOTE.EXE",
+    'excel': "C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE",
+    'whatsapp': "C:/Users/ASUS/AppData/Local/WhatsApp/WhatsApp.exe"
+}"""
+
+
 # Agente virtual
-def runJuan(listener, name, engine):
+def runSara(listener, name, engine):
     while True:
         
         rec = Functions.Listener.listen(listener, name, engine)
