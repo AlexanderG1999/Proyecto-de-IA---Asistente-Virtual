@@ -1,7 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
 
-from Agents.VirtualAgent import runJuan
+from Functions.Virtual import runJuan
 
 name = "juan"
 listener = sr.Recognizer()
