@@ -15,12 +15,12 @@ programs = {
 def runJuan(listener, name, engine):
     while True:
         
-        rec = Agents.Listener.listen(listener, name, engine)
+        rec = Functions.Listener.listen(listener, name, engine)
 
         if 'play' in rec:
             music = rec.replace('play', '')
             print("Reproduciendo " + music)
-            Agents.Talker.talk("Reproduciendo " + music, engine)
+            Functions.Talker.talk("Reproduciendo " + music, engine)
             pywhatkit.playonyt(music)
             #pywhatkit.send_mail('alexanderguillin1999@gmail.com', 'jhosel.1999', 'Holiii prueba', 'Holiiii x2', 'anais.leo.la@gmail.com')
             #pywhatkit.sendwhatmsg("+593996132210", "Hola guapa", 15, 36, 2, True, 1) #Enviar mensaje por WhatsApp
@@ -28,10 +28,10 @@ def runJuan(listener, name, engine):
         elif 'open' in rec:
             for app in programs:
                 if app in rec:
-                    Agents.Talker.talk(f'Abriendo {app}', engine)
+                    Functions.Talker.talk(f'Abriendo {app}', engine)
                     os.startfile(programs[app])
             print(f'Abriendo {app}')
         
         elif 'finish' in rec:
-            Agents.Talker.talk('Adios', engine)
+            Functions.Talker.talk('Adios', engine)
             break
