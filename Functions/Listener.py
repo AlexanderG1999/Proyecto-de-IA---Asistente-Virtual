@@ -13,7 +13,6 @@ def listen(listener, nameAV, engine):
             rec = rec.lower()
             if nameAV in rec:
                 rec = rec.replace(nameAV, '')
-                
     except:
         pass
     return rec

@@ -1,9 +1,9 @@
 import speech_recognition as sr
 import pyttsx3
 
-from Functions.Virtual import runJuan
+from Functions.VirtualSara import runSara
 
-name = "juan"
+name = "Sara"
 listener = sr.Recognizer()
 engine = pyttsx3.init() # Transforma texto a voz
 voices = engine.getProperty('voices')
@@ -11,4 +11,4 @@ engine.setProperty('voice', voices[0].id) # Se escoge una de las voces del siste
 
 # Main
 if __name__ == '__main__':
-    runJuan(listener, name, engine)
+    runSara(listener, name, engine)
