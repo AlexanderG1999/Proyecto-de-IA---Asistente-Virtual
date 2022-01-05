@@ -1,37 +1,16 @@
 import smtplib
-from email.message import EmailMessage
 
-email_subject = "Prueba IA"
-sender_email_address = "alexanderguillin1999@gmail.com"
-receiver_email_address = "anais.leo.la@gmail.com"
-email_smtp = "smtp.gmail.com"
-email_password = "jhosel.1999"
 
-# Create an email message object
-message = EmailMessage()
+message = "Hola, un mensaje desde Python!\n ya valio papu, mi IA envia correos"
+subject = "Prueba de correo"
 
-# Configure email headers
-message['Subject'] = email_subject
-message['From'] = sender_email_address
-message['To'] = receiver_email_address
+message = 'Subject: {}\n\n{}'.format(subject,message)
 
-# Set email body text
-message.set_content("Hello from Python!")
-
-# Set smtp server and port
-server = smtplib.SMTP(email_smtp, '587')
-
-# Identify this client to the SMTP server
-server.ehlo()
-
-# Secure the SMTP connection
+server = smtplib.SMTP('smtp.gmail.com',587)
 server.starttls()
+server.login('leo.andrade.la1@gmail.com',10191999)
 
-# Login to email account
-server.login(sender_email_address, email_password)
-
-# Send email
-server.send_message(message)
-
-# Close connection to server
+server.sendmail('leo.andrade.la1@gmail.com','veronica99quesada@gmail.com', message)
 server.quit()
+
+print("Correo enviado exito")
