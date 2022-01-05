@@ -4,7 +4,6 @@ import Functions.Talker
 # Agente que escucha
 def listen(listener, nameAV, engine):
     try:
-
         with sr.Microphone() as source:
             print("Escuchando...")
             Functions.Talker.talk("Te escucho", engine)
