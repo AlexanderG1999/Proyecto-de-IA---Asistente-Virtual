@@ -3,6 +3,8 @@ import pywhatkit
 import Functions.Listener
 import Functions.Talker, os
 
+from Functions.sendMail import sendMail
+
 programs = {
     'telegram': "C:/Users/ASUS/AppData/Roaming/Telegram Desktop/Telegram.exe",
     'Microsoft Word': "C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE",
@@ -37,6 +39,8 @@ def runSara(listener, name, engine):
                     Functions.Talker.talk(f'Abriendo {app}', engine)
                     os.startfile(programs[app])
             print(f'Abriendo {app}')
+        elif 'send' in rec:
+            sendMail('alexanderguillin1999@gmail.com')
         elif 'finish' in rec:
             Functions.Talker.talk('Adios', engine)
             break
