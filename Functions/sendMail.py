@@ -15,5 +15,3 @@ def sendMail(email_reciver):
     server.quit()
 
     print("Correo enviado exito")
-
-sendMail()
