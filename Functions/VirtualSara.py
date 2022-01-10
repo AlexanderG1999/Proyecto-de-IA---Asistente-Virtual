@@ -31,8 +31,6 @@ def runSara(listener, name, engine):
             print("Reproduciendo " + music)
             Functions.Talker.talk("Reproduciendo " + music, engine)
             pywhatkit.playonyt(music)
-            #pywhatkit.send_mail('alexanderguillin1999@gmail.com', 'jhosel.1999', 'Holiii prueba', 'Holiiii x2', 'anais.leo.la@gmail.com')
-            #pywhatkit.sendwhatmsg("+593996132210", "Hola guapa", 15, 36, 2, True, 1) #Enviar mensaje por WhatsApp
         elif 'open' in rec:
             for app in programs:
                 if app in rec:
