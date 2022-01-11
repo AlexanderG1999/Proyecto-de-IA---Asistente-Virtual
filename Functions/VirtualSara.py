@@ -37,8 +37,9 @@ def runSara(listener, name, engine):
                     Functions.Talker.talk(f'Abriendo {app}', engine)
                     os.startfile(programs[app])
             print(f'Abriendo {app}')
-        elif 'send' in rec:
-            sendMail('alexanderguillin1999@gmail.com')
+        elif 'send mail' in rec:
+            Functions.Talker.talk(f'Enviando email', engine)
+            sendMail('alexanderguillin1999@gmail.com', engine)
         elif 'finish' in rec:
             Functions.Talker.talk('Adios', engine)
             break
