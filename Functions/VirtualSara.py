@@ -1,7 +1,8 @@
 import pywhatkit
 
 import Functions.Listener
-import Functions.Talker, os
+import Functions.Talker
+import os
 
 from Functions.sendMail import sendMail
 
@@ -26,20 +27,25 @@ programs = {
 def runSara(listener, name, engine):
     while True:
         rec = Functions.Listener.listen(listener, name, engine)
+        
         if 'play' in rec:
             music = rec.replace('play', '')
             print("Reproduciendo " + music)
             Functions.Talker.talk("Reproduciendo " + music, engine)
             pywhatkit.playonyt(music)
+        
         elif 'open' in rec:
             for app in programs:
                 if app in rec:
                     Functions.Talker.talk(f'Abriendo {app}', engine)
                     os.startfile(programs[app])
+            
             print(f'Abriendo {app}')
+        
         elif 'send mail' in rec:
             Functions.Talker.talk(f'Enviando email', engine)
             sendMail('alexanderguillin1999@gmail.com', engine)
+        
         elif 'finish' in rec:
             Functions.Talker.talk('Adios', engine)
             break
