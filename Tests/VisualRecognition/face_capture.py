@@ -1,11 +1,12 @@
-import cv2
+import cv2 # Tratamiento de imagenes
 import os
-import imutils
+import imutils # Manipular imagen
 
 person = 'Alexander'
 data_path = 'Data_' + person
-person_path = data_path + '/' + person
+person_path = data_path + '/' + person # Crear carpeta donde se almacenarán las imagenes generadas (data)
 
+# Verificar en el caso que no existe los directorios previos
 if not os.path.exists(person_path):
     os.makedirs(person_path)
 
@@ -21,7 +22,7 @@ while True:
     if comp == False:
         break
     
-    frame = imutils.resize(frame, width=640)
+    frame = imutils.resize(frame, width=640) # Tamaño de imagenes
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     aux_frame = frame.copy()
 
@@ -34,10 +35,10 @@ while True:
         #cv2.imwrite(person_path+f'/face_{count}.jpg', face)
         #count += 1
     
-    cv2.imshow('frame', frame)
+    cv2.imshow('frame', frame) # Mostramos ventana
     key = cv2.waitKey(1)
     
-    if key == ord('s'): #or key == 27 or count >= 300:
+    if key == ord('s') or key == 27 or count >= 300:
         break
 
 capture.release()
