@@ -39,8 +39,7 @@ def runSara(listener, name, engine):
                 if app in rec:
                     Functions.Talker.talk(f'Abriendo {app}', engine)
                     os.startfile(programs[app])
-            
-            print(f'Abriendo {app}')
+                    print(f'Abriendo {app}')
         
         elif 'send mail' in rec:
             Functions.Talker.talk(f'Enviando email', engine)

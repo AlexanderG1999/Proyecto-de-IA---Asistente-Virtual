@@ -9,7 +9,7 @@ person_path = data_path + '/' + person
 if not os.path.exists(person_path):
     os.makedirs(person_path)
 
-capture = cv2.VideoCapture(0)  # 0 tu propia camara, #1 camara remota, path.mp4
+capture = cv2.VideoCapture('Videos/Alexander.mp4')  # 0 tu propia camara, #1 camara remota, path.mp4
 
 
 face_classif = cv2.CascadeClassifier('Ruido/haarcascade_frontalface_default.xml')
