@@ -9,10 +9,10 @@ def listen(listener, nameAV, engine):
         with sr.Microphone() as source:
             print("Escuchando...")
             Functions.Talker.talk("Te escucho", engine)
-            listener.adjust_for_ambient_noise(source)
+            listener.adjust_for_ambient_noise(source) #elimina el ruido de ambiente
             pc = listener.listen(source)  # Escuchar desde el microfono
             # Utilizar servicios de reconocimiento de Google
-            rec = listener.recognize_google(pc, language='es-Mx')
+            rec = listener.recognize_google(pc, language='es-Mx') #ajuste de lenguaje
             rec = rec.lower()
 
             if nameAV in rec:
