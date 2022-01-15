@@ -29,7 +29,7 @@ def runSara(nameAV, engine):
                     phrase = phrase.replace(nameAV, '')
                 
                 if 'reproduce' in phrase:
-                    music = phrase.replace('reproducir', '')
+                    music = phrase.replace('reproduce', '')
                     print("Reproduciendo " + music)
                     talk("Reproduciendo " + music, engine)
                     pywhatkit.playonyt(music)
