@@ -11,3 +11,7 @@ pip install pywhatkit
 --Librerias para reconocimiento facial --
 pip install opencv-python
 pip install imutils
+
+-- Librerias Interfaz
+pip install PyQt5
+https://build-system.fman.io/qt-designer-download
