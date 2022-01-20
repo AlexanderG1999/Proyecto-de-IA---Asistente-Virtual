@@ -8,6 +8,7 @@ class Ventana(QtWidgets.QMainWindow):  #this = self
         self.ui = Ui_MainWindow() #nombre de la clase interface
         self.ui.setupUi(self)
         self.ui.AceptarButton.clicked.connect(self.sumar) #linkea evento
+    
     def sumar (self):
         n1 = int(self.ui.Num1TextEdit.toPlainText()) #getext
         n2 = int(self.ui.Num2TextEdit.toPlainText())
