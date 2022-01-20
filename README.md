@@ -1,6 +1,7 @@
 # Proyecto-de-IA---Asistente-Virtual
 Asistente Virtual que realizará múltiples funciones - IA
 
+pip install Unidecode
 
 --Librerias
 pip install SpeechRecognition
