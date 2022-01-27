@@ -42,15 +42,40 @@ class MiApp(QtWidgets.QMainWindow):
 	def control_bt_minimizar(self):
 		self.showMinimized()		
 
+
 	def  control_bt_normal(self): 
 		self.showNormal()		
 		self.ui.bt_restaurar.hide()
 		self.ui.bt_maximizar.show()
+		#Page_Uno
+		self.ui.lineEdit.setGeometry(QtCore.QRect(170, 100, 250, 41))
+		self.ui.lineEdit_NewProgram.setGeometry(QtCore.QRect(100, 180, 391, 51))
+		self.ui.pushButton_NewProg.setGeometry(QtCore.QRect(210, 300, 171, 31))
+		#Page_Dos
+		self.ui.lineEdit_3.setGeometry(QtCore.QRect(170, 100, 250, 41))
+		self.ui.lineEdit_NewMail.setGeometry(QtCore.QRect(100, 190, 391, 51))
+		self.ui.pushButton_NewMail.setGeometry(QtCore.QRect(210, 310, 171, 31))
+		#Page_Tres
+		self.ui.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(90, 130, 400, 41))
+		self.ui.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(90, 270, 400, 41))
+
 
 	def  control_bt_maximizar(self): 
 		self.showMaximized()
 		self.ui.bt_maximizar.hide()
 		self.ui.bt_restaurar.show()
+		extender = int((726-self.ui.page_uno.width())/9)
+		#Page_Uno
+		self.ui.lineEdit.setGeometry(QtCore.QRect(250+extender, 100, 250, 41))
+		self.ui.lineEdit_NewProgram.setGeometry(QtCore.QRect(180+extender, 180, 391, 51))
+		self.ui.pushButton_NewProg.setGeometry(QtCore.QRect(290+extender, 300, 171, 31))
+		#Page_Dos
+		self.ui.lineEdit_3.setGeometry(QtCore.QRect(250+extender, 100, 250, 41))
+		self.ui.lineEdit_NewMail.setGeometry(QtCore.QRect(180+extender, 190, 391, 51))
+		self.ui.pushButton_NewMail.setGeometry(QtCore.QRect(290+extender, 310, 171, 31))
+		#Page_Tres
+		self.ui.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(190+extender, 130, 400, 41))
+		self.ui.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(190+extender, 270, 400, 41))
 
 	def mover_menu(self):
 		if True:			
@@ -58,8 +83,32 @@ class MiApp(QtWidgets.QMainWindow):
 			normal = 0
 			if width==0:
 				extender = 200
+				#Page_Uno
+				self.ui.lineEdit.setGeometry(QtCore.QRect(170, 100, 250, 41))
+				self.ui.lineEdit_NewProgram.setGeometry(QtCore.QRect(100, 180, 391, 51))
+				self.ui.pushButton_NewProg.setGeometry(QtCore.QRect(210, 300, 171, 31))
+				#Page_Dos
+				self.ui.lineEdit_3.setGeometry(QtCore.QRect(170, 100, 250, 41))
+				self.ui.lineEdit_NewMail.setGeometry(QtCore.QRect(100, 190, 391, 51))
+				self.ui.pushButton_NewMail.setGeometry(QtCore.QRect(210, 310, 171, 31))
+				#Page_Tres
+				self.ui.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(90, 130, 400, 41))
+				self.ui.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(90, 270, 400, 41))
+				
 			else:
 				extender = normal
+				#Page_Uno
+				self.ui.lineEdit.setGeometry(QtCore.QRect(250+extender, 100, 250, 41))
+				self.ui.lineEdit_NewProgram.setGeometry(QtCore.QRect(180+extender, 180, 391, 51))
+				self.ui.pushButton_NewProg.setGeometry(QtCore.QRect(290+extender, 300, 171, 31))
+				#Page_Dos
+				self.ui.lineEdit_3.setGeometry(QtCore.QRect(250+extender, 100, 250, 41))
+				self.ui.lineEdit_NewMail.setGeometry(QtCore.QRect(180+extender, 190, 391, 51))
+				self.ui.pushButton_NewMail.setGeometry(QtCore.QRect(290+extender, 310, 171, 31))
+				#Page_Tres
+				self.ui.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(190+extender, 130, 400, 41))
+				self.ui.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(190+extender, 270, 400, 41))
+			
 			self.animacion = QPropertyAnimation(self.ui.frame_lateral, b'minimumWidth')
 			self.animacion.setDuration(300)
 			self.animacion.setStartValue(width)

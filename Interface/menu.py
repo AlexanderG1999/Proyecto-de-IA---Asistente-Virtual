@@ -14,7 +14,7 @@ from PyQt5.QtGui import QMovie
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(650, 420)
+        MainWindow.resize(760, 420)
         MainWindow.setMinimumSize(QtCore.QSize(400, 0))
         MainWindow.setStyleSheet("")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -263,7 +263,6 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.page)
         self.label.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.label.setText("")
-        #self.label.setPixmap(QtGui.QPixmap("Interface\\gifJarvis.gif"))
         self.movie = QMovie("Interface\\gifJarvis.gif")
         self.label.setMovie(self.movie)
         self.movie.start()
@@ -273,7 +272,8 @@ class Ui_MainWindow(object):
         self.label.setObjectName("label")
         self.verticalLayout_9.addWidget(self.label)
         self.lineEdit_textAV = QtWidgets.QLineEdit(self.page)
-        self.lineEdit_textAV.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.lineEdit_textAV.setGeometry(QtCore.QRect(170, 100, 250, 41))
+        self.lineEdit_textAV.setMaximumSize(QtCore.QSize(16777215, 16777215))
         self.lineEdit_textAV.setStyleSheet("color: rgb(255, 0, 0);\n"
 "background-color: rgb(128, 128, 128);")
         self.lineEdit_textAV.setAlignment(QtCore.Qt.AlignCenter)
@@ -283,7 +283,7 @@ class Ui_MainWindow(object):
         self.page_uno = QtWidgets.QWidget()
         self.page_uno.setObjectName("page_uno")
         self.lineEdit = QtWidgets.QLineEdit(self.page_uno)
-        self.lineEdit.setGeometry(QtCore.QRect(170, 110, 191, 41))
+        self.lineEdit.setGeometry(QtCore.QRect(170, 100, 250, 41))
         self.lineEdit.setStyleSheet("font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 255, 255);\n"
@@ -291,7 +291,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_NewProgram = QtWidgets.QLineEdit(self.page_uno)
-        self.lineEdit_NewProgram.setGeometry(QtCore.QRect(70, 190, 391, 51))
+        self.lineEdit_NewProgram.setGeometry(QtCore.QRect(100, 180, 391, 51))
         self.lineEdit_NewProgram.setStyleSheet("color: rgb(255, 255, 255);\n"
 "font: 14pt \"Arial\";\n"
 "background-color: rgb(128, 128, 128);\n"
@@ -300,7 +300,7 @@ class Ui_MainWindow(object):
         self.lineEdit_NewProgram.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_NewProgram.setObjectName("lineEdit_NewProgram")
         self.pushButton_NewProg = QtWidgets.QPushButton(self.page_uno)
-        self.pushButton_NewProg.setGeometry(QtCore.QRect(180, 310, 171, 31))
+        self.pushButton_NewProg.setGeometry(QtCore.QRect(210, 300, 171, 31))
         self.pushButton_NewProg.setStyleSheet("QPushButton{\n"
 "font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(128, 128, 128);\n"
@@ -319,7 +319,7 @@ class Ui_MainWindow(object):
         self.page_dos = QtWidgets.QWidget()
         self.page_dos.setObjectName("page_dos")
         self.lineEdit_3 = QtWidgets.QLineEdit(self.page_dos)
-        self.lineEdit_3.setGeometry(QtCore.QRect(160, 110, 191, 41))
+        self.lineEdit_3.setGeometry(QtCore.QRect(170, 100, 250, 41))
         self.lineEdit_3.setStyleSheet("font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(0, 0, 0);\n"
 "color: rgb(255, 255, 255);\n"
@@ -327,7 +327,7 @@ class Ui_MainWindow(object):
         self.lineEdit_3.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_3.setObjectName("lineEdit_3")
         self.lineEdit_NewMail = QtWidgets.QLineEdit(self.page_dos)
-        self.lineEdit_NewMail.setGeometry(QtCore.QRect(70, 200, 391, 51))
+        self.lineEdit_NewMail.setGeometry(QtCore.QRect(100, 190, 391, 51))
         self.lineEdit_NewMail.setStyleSheet("color: rgb(255, 255, 255);\n"
 "font: 14pt \"Arial\";\n"
 "background-color: rgb(128, 128, 128);\n"
@@ -336,7 +336,7 @@ class Ui_MainWindow(object):
         self.lineEdit_NewMail.setAlignment(QtCore.Qt.AlignCenter)
         self.lineEdit_NewMail.setObjectName("lineEdit_NewMail")
         self.pushButton_NewMail = QtWidgets.QPushButton(self.page_dos)
-        self.pushButton_NewMail.setGeometry(QtCore.QRect(180, 320, 171, 31))
+        self.pushButton_NewMail.setGeometry(QtCore.QRect(210, 310, 171, 31))
         self.pushButton_NewMail.setStyleSheet("QPushButton{\n"
 "font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(128, 128, 128);\n"
@@ -355,7 +355,7 @@ class Ui_MainWindow(object):
         self.page_tres = QtWidgets.QWidget()
         self.page_tres.setObjectName("page_tres")
         self.pushButton_NewFaVidComp = QtWidgets.QPushButton(self.page_tres)
-        self.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(110, 130, 311, 41))
+        self.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(90, 130, 400, 41))
         self.pushButton_NewFaVidComp.setStyleSheet("QPushButton{\n"
 "font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(128, 128, 128);\n"
@@ -371,7 +371,7 @@ class Ui_MainWindow(object):
 "}")
         self.pushButton_NewFaVidComp.setObjectName("pushButton_NewFaVidComp")
         self.pushButton_NewFacCamComp = QtWidgets.QPushButton(self.page_tres)
-        self.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(110, 270, 311, 41))
+        self.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(90, 270, 400, 41))
         self.pushButton_NewFacCamComp.setStyleSheet("QPushButton{\n"
 "font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(128, 128, 128);\n"
