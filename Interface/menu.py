@@ -281,6 +281,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.lineEdit_textAV)
         self.stackedWidget.addWidget(self.page)
         self.page_uno = QtWidgets.QWidget()
+        self.page_uno.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.page_uno.setObjectName("page_uno")
         self.lineEdit = QtWidgets.QLineEdit(self.page_uno)
         self.lineEdit.setGeometry(QtCore.QRect(170, 100, 250, 41))
@@ -393,7 +394,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
