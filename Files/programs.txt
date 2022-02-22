@@ -1,0 +1,5 @@
+telegram: C:/Users/ASUS/AppData/Roaming/Telegram Desktop/Telegram.exe
+word: C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE
+onenote: C:/Program Files/Microsoft Office/root/Office16/ONENOTE.EXE
+excel: C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE
+whatsapp: C:/Users/ASUS/AppData/Local/WhatsApp/WhatsApp.exe

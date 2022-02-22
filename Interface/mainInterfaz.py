@@ -3,12 +3,27 @@ from menu import *
 from PyQt5 import QtCore
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QThread
+import pyttsx3
+
+from Functions.VirtualSara import runSara
+
+name = 'sara'
+engine = pyttsx3.init()  # Transforma texto a voz
+voices = engine.getProperty('voices')# Se escoge una de las voces del sistema (Español)
+engine.setProperty('voice', voices[0].id)
+
+class Sara(QThread):
+    def __init__():
+        super().__init__()
+        runSara(name, engine)
 
 class MiApp(QtWidgets.QMainWindow):
 	def __init__(self):
 		super().__init__()
 		self.ui = Ui_MainWindow() 
 		self.ui.setupUi(self)
+		self._sara = Sara()
 
 		#eliminar barra y de titulo - opacidad
 		self.setWindowFlag(QtCore.Qt.FramelessWindowHint)
@@ -180,9 +195,7 @@ class MiApp(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-     app = QtWidgets.QApplication(sys.argv)
-     mi_app = MiApp()
-     mi_app.show()
-     sys.exit(app.exec_())	
-
-
+	app = QtWidgets.QApplication(sys.argv)
+	mi_app = MiApp()
+	mi_app.show()
+	sys.exit(app.exec_())

@@ -7,14 +7,6 @@ import os
 
 from Functions.sendMail import sendMail
 
-programs = {
-    'telegram': "C:/Users/ASUS/AppData/Roaming/Telegram Desktop/Telegram.exe",
-    'word': "C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE",
-    'onenote': "C:/Program Files/Microsoft Office/root/Office16/ONENOTE.EXE",
-    'excel': "C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE",
-    'whatsapp': "C:/Users/ASUS/AppData/Local/WhatsApp/WhatsApp.exe"
-}
-
 """programs = {
     'telegram': "C:/Users/ASUS/AppData/Roaming/Telegram Desktop/Telegram.exe",
     'Microsoft Word': "C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE",
@@ -22,6 +14,11 @@ programs = {
     'excel': "C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE",
     'whatsapp': "C:/Users/ASUS/AppData/Local/WhatsApp/WhatsApp.exe"
 }"""
+
+def escribirArchivo(cadena, rutaArchivo):
+    archivo = open(rutaArchivo, "a")
+    archivo.write(cadena+"\n")
+    archivo.close()
 
 
 # Agente virtual
@@ -36,11 +33,13 @@ def runSara(name, engine):
             pywhatkit.playonyt(music)
         
         elif 'abre' in rec:
-            for app in programs:
-                if app in rec:
-                    talk(f'Abriendo {app}', engine)
-                    os.startfile(programs[app])
-                    print(f'Abriendo {app}')
+            with open("Files/programs.txt") as programs:
+                for linea in programs:
+                    linea = linea.split(': ')
+                    if linea[0] in rec:
+                        talk(f'Abriendo {linea[0]}', engine)
+                        os.startfile(linea[1].rstrip())
+                        print(f'Abriendo {linea[0]}')
         
         elif 'enviar email' in rec:
             talk(f'Enviando email', engine)
