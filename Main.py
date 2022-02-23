@@ -6,8 +6,11 @@ from PyQt5.QtCore import QPropertyAnimation
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import QThread
 import pyttsx3
+import subprocess
 
-from Functions.VirtualSara import runSara
+from Functions.VirtualSara import runSara, escribirArchivo
+from Functions.listener import listen
+from Functions.talker import talk
 
 name = 'sara'
 engine = pyttsx3.init()  # Transforma texto a voz
@@ -58,6 +61,40 @@ class MiApp(QtWidgets.QMainWindow):
 
         # menu lateral
         self.ui.bt_menu.clicked.connect(self.mover_menu)
+
+        # Control botones nuevo email y programa
+        self.ui.pushButton_NewMail.clicked.connect(self.newEmail)
+        self.ui.pushButton_NewProg.clicked.connect(self.newProgram)
+
+    def newEmail(self):
+        email = self.ui.lineEdit_NewMail.text()
+        cmd = ['hostname']
+        shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
+        hostname = (shell_cmd.stdout).rstrip()
+
+        if hostname == "LAPTOP-BDO1H2E7": #Computadora Alexander
+            archivo = "Files/emailsAlex.txt"
+        else: #Computadora Leo
+            archivo = "Files/emailsLeo.txt"
+
+        escribirArchivo(email, archivo)
+
+        talk("Nuevo email agregado con éxito", engine)
+
+    def newProgram(self):
+        program = self.ui.lineEdit_NewProgram.text()
+        cmd = ['hostname']
+        shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
+        hostname = (shell_cmd.stdout).rstrip()
+
+        if hostname == "LAPTOP-BDO1H2E7": #Computadora Alexander
+            archivo = "Files/programsAlex.txt"
+        else: #Computadora Leo
+            archivo = "Files/programsLeo.txt"
+
+        escribirArchivo(program, archivo)
+
+        talk("Nuevo programa agregado con éxito", engine)
 
     def control_bt_minimizar(self):
         self.showMinimized()

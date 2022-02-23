@@ -1,37 +1,49 @@
 import unidecode
-import smtplib, time
+import smtplib
+import time
 from Functions.talker import talk
 from Functions.listener import listen
+import subprocess
 
 
 def takeEmailReciver(nameAV, engine):
     talk("¿Cuál es el nombre y apellido del destinario?", engine)
-    listened_sender = listen(nameAV, engine)
-    
+    listened_sender = listen(nameAV, engine, 1)
+
     return listened_sender
 
 
 def takeMessage(nameAV, engine):
     talk("¿Cuál es el mensaje a enviar?", engine)
-    listened_message = listen(nameAV, engine)
-    
+    listened_message = listen(nameAV, engine, 1)
+
     return listened_message
 
 
 def takeSubject(nameAV, engine):
     talk("¿Cuál es el asunto del correo?", engine)
-    listened_subject = listen(nameAV, engine)
-    
+    listened_subject = listen(nameAV, engine, 1)
+
     return listened_subject
 
 
 def sendMail(nameAV, engine):
-    email_sender = 'leo.andrade.la1@gmail.com'
+    cmd = ['hostname']
+    shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
+    hostname = (shell_cmd.stdout).rstrip()
+
+    if hostname == "LAPTOP-BDO1H2E7":  # Computadora Alexander
+        archivo = "Files/emailsAlex.txt"
+        email_sender = 'alexanderguillin1999@gmail.com'
+    else: #Computadora Leo
+        archivo = "Files/emailsLeo.txt"
+        email_sender = 'leo.andrade.la1@gmail.com'
+
     # Viendo destinario en el diccionario
     nameDictionary = takeEmailReciver(nameAV, engine).lower()
     print(nameDictionary)
     
-    with open("Files/emails.txt") as emails:
+    with open(archivo) as emails:
         for linea in emails:
             linea = linea.split(': ')
             if linea[0] in nameDictionary:

@@ -4,16 +4,10 @@ from Functions.listener import listen
 from Functions.talker import talk
 from Functions.createEvent import create_event
 import os
+import subprocess
 
 from Functions.sendMail import sendMail
 
-"""programs = {
-    'telegram': "C:/Users/ASUS/AppData/Roaming/Telegram Desktop/Telegram.exe",
-    'Microsoft Word': "C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE",
-    'onenote': "C:/Program Files/Microsoft Office/root/Office16/ONENOTE.EXE",
-    'excel': "C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE",
-    'whatsapp': "C:/Users/ASUS/AppData/Local/WhatsApp/WhatsApp.exe"
-}"""
 
 def escribirArchivo(cadena, rutaArchivo):
     archivo = open(rutaArchivo, "a")
@@ -24,7 +18,7 @@ def escribirArchivo(cadena, rutaArchivo):
 # Agente virtual
 def runSara(name, engine):
     while True:
-        rec = listen(name, engine)
+        rec = listen(name, engine, 1)
         
         if 'reproduce' in rec:
             music = rec.replace('reproduce', '')
@@ -33,7 +27,16 @@ def runSara(name, engine):
             pywhatkit.playonyt(music)
         
         elif 'abre' in rec:
-            with open("Files/programs.txt") as programs:
+            cmd = ['hostname']
+            shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
+            hostname = (shell_cmd.stdout).rstrip()
+
+            if hostname == "LAPTOP-BDO1H2E7": #Computadora Alexander
+                archivo = "Files/programsAlex.txt"
+            else: #Computadora Leo
+                archivo = "Files/programsLeo.txt"
+
+            with open(archivo) as programs:
                 for linea in programs:
                     linea = linea.split(': ')
                     if linea[0] in rec:

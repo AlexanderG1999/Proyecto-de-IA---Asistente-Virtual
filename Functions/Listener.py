@@ -3,7 +3,7 @@ from selenium.common.exceptions import TimeoutException
 from Functions.talker import talk
 
 # AV escuche
-def listen(nameAV, engine):
+def listen(nameAV, engine, opcion): #Parametro (opcion) limita la opcion de talk('Te escucho')
     sr.Microphone(device_index=0)
         
     # Creando un objeto de reconocimiento de voz
@@ -12,9 +12,10 @@ def listen(nameAV, engine):
     r.dynamic_energy_threshold = False
 
     with sr.Microphone() as source:
-        talk('Te escucho', engine)
-        print('Escuchando...')
-        #r.pause_treshold = 0.1  # Evitar solapamiento de voces
+        if opcion == 1:
+            talk('Te escucho', engine)
+            print('Escuchando...')
+            #r.pause_treshold = 0.1  # Evitar solapamiento de voces
 
         # Reducir ruido ambiental
         r.adjust_for_ambient_noise(source)
