@@ -13,6 +13,7 @@ pip install pywhatkit
 --Librerias para reconocimiento facial --
 pip install opencv-python
 pip install imutils
+pip install opencv-contrib-python
 
 -- Librerias Interfaz
 pip install PyQt5
