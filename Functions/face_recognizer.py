@@ -4,6 +4,8 @@ import threading as tr
 import subprocess as sub
 import imutils
 
+from Functions.sendMssTelegram import Telegram_Alert
+
 data_path = 'Data_face'
 image_paths = os.listdir(data_path)
 #print('image_paths=', image_paths)
@@ -36,10 +38,12 @@ def face_rec(state):
             if result[1] < 76:
                 cv2.putText(frame, f'{image_paths[result[0]]}', (x, y-25), 2, 0.8, (0, 255, 0),1 ,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                Telegram_Alert(image_paths[result[0]])
             else:
                 #thread_alarma_song(0)
                 cv2.putText(frame, 'Desconocido', (x, y-20), 2, 0.8, (0, 0, 255), 1,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                Telegram_Alert(Desconocido)
         cv2.imshow('frame',frame)
 
         if cv2.waitKey(1) & state == 1 or cv2.waitKey(1) == ord('s'):
@@ -48,4 +52,14 @@ def face_rec(state):
             cv2.destroyAllWindows()
             sub.call(f'taskkill /IM python.exe /F', shell = True)
 
+"""def alarm(state, name):
+    if state ==0:
+        Telegram_Alert(Desconocido)
+    else:
+        Telegram_Alert(name)"""
+
+"""def thread_alarm(state, name):
+    ta = tr.Thread(target=alarma_song, args=(state,))
+    ta.start()
+"""
 face_rec(0)
