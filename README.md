@@ -3,6 +3,9 @@ Asistente Virtual que realizará múltiples funciones - IA
 Integrantes: Leonardo Andrade - Alexander Guillin
 
 pip install Unidecode
+pip install google-api-python-client
+pip install google-auth-oauthlib
+pip install google-auth
 
 --Librerias
 pip install SpeechRecognition

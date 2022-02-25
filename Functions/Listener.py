@@ -5,7 +5,7 @@ from Functions.talker import talk
 # AV escuche
 def listen(nameAV, engine, opcion): #Parametro (opcion) limita la opcion de talk('Te escucho')
     sr.Microphone(device_index=0)
-        
+
     # Creando un objeto de reconocimiento de voz
     r = sr.Recognizer()
     r.energy_threshold = 5000 # Mejorar calidad de reconocimiento de micrófono

@@ -3,9 +3,7 @@ import os
 import threading as tr
 import subprocess as sub
 import imutils
-
-from Functions.sendMssTelegram import Telegram_Alert
-
+from sendMssTelegram import Telegram_Alert
 data_path = 'Data_face'
 image_paths = os.listdir(data_path)
 #print('image_paths=', image_paths)
@@ -17,7 +15,7 @@ face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml'
 
 
 def face_rec(state):
-    capture = cv2.VideoCapture(0)
+    capture = cv2.VideoCapture('Videos/Alexander.mp4')
     while True:
         comp, frame = capture.read()
         if comp == False: break
