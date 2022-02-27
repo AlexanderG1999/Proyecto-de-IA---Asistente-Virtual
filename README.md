@@ -7,7 +7,10 @@ pip install google-api-python-client
 pip install google-auth-oauthlib
 pip install google-auth
 
---Librerias
+--Libreria para Calendar Setup
+pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
+--Librerias reconocimiento de voz
 pip install SpeechRecognition
 pip install pyttsx3
 pip install PyAudio
