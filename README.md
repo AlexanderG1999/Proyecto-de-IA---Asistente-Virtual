@@ -2,12 +2,9 @@
 Asistente Virtual que realizará múltiples funciones - IA
 Integrantes: Leonardo Andrade - Alexander Guillin
 
-pip install Unidecode
-pip install google-api-python-client
-pip install google-auth-oauthlib
-pip install google-auth
 
 --Libreria para Calendar Setup
+pip install Unidecode
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
 
 --Librerias reconocimiento de voz
@@ -15,6 +12,7 @@ pip install SpeechRecognition
 pip install pyttsx3
 pip install PyAudio
 pip install pywhatkit
+pip install selenium
 
 --Librerias para reconocimiento facial --
 pip install opencv-python
