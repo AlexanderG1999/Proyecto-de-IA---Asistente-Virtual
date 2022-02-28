@@ -13,6 +13,7 @@ pip install pyttsx3
 pip install PyAudio
 pip install pywhatkit
 pip install selenium
+pip install flask
 
 --Librerias para reconocimiento facial --
 pip install opencv-python
