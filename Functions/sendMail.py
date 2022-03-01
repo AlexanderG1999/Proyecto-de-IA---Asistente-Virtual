@@ -8,21 +8,21 @@ import subprocess
 
 def takeEmailReciver(nameAV, engine):
     talk("¿Cuál es el nombre y apellido del destinario?", engine)
-    listened_sender = listen(nameAV, engine, 1)
+    listened_sender = listen(nameAV, engine)
 
     return listened_sender
 
 
 def takeMessage(nameAV, engine):
     talk("¿Cuál es el mensaje a enviar?", engine)
-    listened_message = listen(nameAV, engine, 1)
+    listened_message = listen(nameAV, engine)
 
     return listened_message
 
 
 def takeSubject(nameAV, engine):
     talk("¿Cuál es el asunto del correo?", engine)
-    listened_subject = listen(nameAV, engine, 1)
+    listened_subject = listen(nameAV, engine)
 
     return listened_subject
 
@@ -32,12 +32,13 @@ def sendMail(nameAV, engine):
     shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
     hostname = (shell_cmd.stdout).rstrip()
 
-    if hostname == "LAPTOP-BDO1H2E7":  # Computadora Alexander
+    if hostname == "ALEXANDER":  # Computadora Alexander
         archivo = "Files/emailsAlex.txt"
-        email_sender = 'alexanderguillin1999@gmail.com'
     else: #Computadora Leo
         archivo = "Files/emailsLeo.txt"
-        email_sender = 'leo.andrade.la1@gmail.com'
+
+    email_sender = 'leo.andrade.la1@gmail.com'
+    password = '10191999'
 
     # Viendo destinario en el diccionario
     nameDictionary = takeEmailReciver(nameAV, engine).lower()
@@ -61,7 +62,7 @@ def sendMail(nameAV, engine):
 
     server = smtplib.SMTP('smtp.gmail.com',587)
     server.starttls()
-    server.login(email_sender,'10191999')
+    server.login(email_sender,password)
 
     server.sendmail(email_sender, email_reciver, message)
     server.quit()

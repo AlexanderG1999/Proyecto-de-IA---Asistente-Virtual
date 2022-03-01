@@ -3,7 +3,7 @@ import os
 import threading as tr
 import subprocess as sub
 import imutils
-from sendMssTelegram import Telegram_Alert
+from Functions.sendMssTelegram import Telegram_Alert
 
 data_path = 'Data_face'
 image_paths = os.listdir(data_path)
@@ -18,7 +18,7 @@ face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml'
 def face_rec():
     aux = 0
     flag = 0
-    capture = cv2.VideoCapture(0)
+    capture = cv2.VideoCapture('Videos/Alexander.mp4')
     while True:
         comp, frame = capture.read()
         if comp == False: break
@@ -50,19 +50,24 @@ def face_rec():
         flag += 1
         cv2.imshow('frame',frame)
         key = cv2.waitKey(1)
-        #tiempo de reconocimiento
+
+        #Tiempo de reconocimiento
         if flag == 100:
+            cv2.destroyAllWindows()
             break
+            cap.release()
 
         if key == ord('s'):
             sub.call(f'taskkill /IM python.exe /F', shell = True)
             break
             cap.release()
             cv2.destroyAllWindows()
+    
     if aux > 0:
         return False
     else:
         return True
+
 def alarm(state,name, aux):
     if aux % 5==0:
         if state ==0:
@@ -73,5 +78,3 @@ def alarm(state,name, aux):
 def thread_alarm(state, name, aux):
     ta = tr.Thread(target=alarm, args=(state, name, aux,))
     ta.start()
-
-face_rec()

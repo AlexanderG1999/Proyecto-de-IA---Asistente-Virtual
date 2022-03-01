@@ -11,6 +11,7 @@ import subprocess
 from Functions.VirtualSara import runSara, escribirArchivo
 from Functions.listener import listen
 from Functions.talker import talk
+from Functions.face_recognizer import face_rec
 
 name = 'sara'
 engine = pyttsx3.init()  # Transforma texto a voz
@@ -72,7 +73,7 @@ class MiApp(QtWidgets.QMainWindow):
         shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
         hostname = (shell_cmd.stdout).rstrip()
 
-        if hostname == "LAPTOP-BDO1H2E7": #Computadora Alexander
+        if hostname == "ALEXANDER": #Computadora Alexander
             archivo = "Files/emailsAlex.txt"
         else: #Computadora Leo
             archivo = "Files/emailsLeo.txt"
@@ -87,7 +88,7 @@ class MiApp(QtWidgets.QMainWindow):
         shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
         hostname = (shell_cmd.stdout).rstrip()
 
-        if hostname == "LAPTOP-BDO1H2E7": #Computadora Alexander
+        if hostname == "ALEXANDER": #Computadora Alexander
             archivo = "Files/programsAlex.txt"
         else: #Computadora Leo
             archivo = "Files/programsLeo.txt"
@@ -278,7 +279,11 @@ class MiApp(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    mi_app = MiApp()
-    mi_app.show()
-    sys.exit(app.exec_())
+    
+    if face_rec() == True:
+        app = QtWidgets.QApplication(sys.argv)
+        mi_app = MiApp()
+        mi_app.show()
+        sys.exit(app.exec_())
+    else:
+        sys.exit(app.exec_())

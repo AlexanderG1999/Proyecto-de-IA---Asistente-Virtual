@@ -3,22 +3,23 @@ from Functions.calendarSetup import get_calendar_service
 from Functions.listener import listen
 from Functions.talker import talk
 import time
+import pyttsx3
 
 def take_event_title(nameAV, engine):
     talk("¿Cuál es el título del evento?", engine)
-    listened_title = listen(nameAV, engine, 1)
+    listened_title = listen(nameAV, engine)
 
     return listened_title
 
 def take_event_desc(nameAV, engine):
     talk("¿Cuál es la descripción del evento?", engine)
-    listen_desc = listen(nameAV, engine, 1)
+    listen_desc = listen(nameAV, engine)
 
     return listen_desc
 
 def take_start_date(nameAV, engine):
     talk("¿En qué fecha y hora será el evento?", engine)
-    listened_date = listen(nameAV, engine, 1)
+    listened_date = listen(nameAV, engine)
 
     if '2000' in listened_date:
         listened_date = listened_date.replace('2000 21', '2021')
@@ -32,7 +33,7 @@ def take_start_date(nameAV, engine):
 
 def take_end_date(nameAV, engine):
     talk("¿En qué fecha y hora terminará el evento?", engine)
-    listened_date = listen(nameAV, engine, 1)
+    listened_date = listen(nameAV, engine)
 
     if '2000' in listened_date:
         listened_date = listened_date.replace('2000 21', '2021')

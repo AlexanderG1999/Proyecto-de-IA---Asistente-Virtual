@@ -6,7 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
-CREDENTIALS_FILE = 'Files/credentialsAlexander.json'
+CREDENTIALS_FILE = 'Files/credentialsAlex.json'
 #CREDENTIALS_FILE = 'Files/credentialsLeonardo.json'
 
 # Configuración de autentificación con Google Calendar

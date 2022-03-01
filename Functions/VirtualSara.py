@@ -18,7 +18,7 @@ def escribirArchivo(cadena, rutaArchivo):
 # Agente virtual
 def runSara(name, engine):
     while True:
-        rec = listen(name, engine, 1)
+        rec = listen(name, engine)
         
         if 'reproduce' in rec:
             music = rec.replace('reproduce', '')
@@ -31,7 +31,7 @@ def runSara(name, engine):
             shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
             hostname = (shell_cmd.stdout).rstrip()
 
-            if hostname == "LAPTOP-BDO1H2E7": #Computadora Alexander
+            if hostname == "ALEXANDER": #Computadora Alexander
                 archivo = "Files/programsAlex.txt"
             else: #Computadora Leo
                 archivo = "Files/programsLeo.txt"
