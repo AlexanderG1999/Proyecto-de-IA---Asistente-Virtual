@@ -16,7 +16,8 @@ face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml'
 
 
 def face_rec(state):
-    capture = cv2.VideoCapture('Videos/Alexander.mp4')
+    aux = 0
+    capture = cv2.VideoCapture(0)
     while True:
         comp, frame = capture.read()
         if comp == False: break
@@ -37,28 +38,30 @@ def face_rec(state):
             if result[1] < 76:
                 cv2.putText(frame, f'{image_paths[result[0]]}', (x, y-25), 2, 0.8, (0, 255, 0),1 ,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                Telegram_Alert(image_paths[result[0]])
+
             else:
-                #thread_alarma_song(0)
+                thread_alarm(0, 'Desconocido', aux)
                 cv2.putText(frame, 'Desconocido', (x, y-20), 2, 0.8, (0, 0, 255), 1,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                Telegram_Alert('Desconocido')
+                aux += 1
         cv2.imshow('frame',frame)
+        key = cv2.waitKey(1)
 
-        if cv2.waitKey(1) & state == 1 or cv2.waitKey(1) == ord('s'):
+        if key == ord('s'):
+            sub.call(f'taskkill /IM python.exe /F', shell = True)
             break
             cap.release()
             cv2.destroyAllWindows()
-            sub.call(f'taskkill /IM python.exe /F', shell = True)
 
-"""def alarm(state, name):
-    if state ==0:
-        Telegram_Alert(Desconocido)
-    else:
-        Telegram_Alert(name)"""
+def alarm(state, name, aux):
+    if aux % 5==0:
+        if state ==0:
+            Telegram_Alert('Desconocido')
+        else:
+            Telegram_Alert(name)
 
-"""def thread_alarm(state, name):
-    ta = tr.Thread(target=alarma_song, args=(state,))
+def thread_alarm(state, name, aux):
+    ta = tr.Thread(target=alarm, args=(state, name, aux,))
     ta.start()
-"""
+
 face_rec(0)

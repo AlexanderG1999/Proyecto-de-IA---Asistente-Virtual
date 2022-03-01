@@ -2,7 +2,7 @@ import cv2 # Tratamiento de imagenes
 import os
 import imutils # Manipular imagen
 
-person = 'Alexander'
+person = 'Leonardo'
 data_path = 'Data_Face'
 person_path = data_path + '/' + person # Crear carpeta donde se almacenarán las imagenes generadas (data)
 
@@ -10,7 +10,7 @@ person_path = data_path + '/' + person # Crear carpeta donde se almacenarán las
 if not os.path.exists(person_path):
     os.makedirs(person_path)
 
-capture = cv2.VideoCapture('Files/Alexander.mp4')  # 0 tu propia camara, #1 camara remota, path.mp4
+capture = cv2.VideoCapture('Videos/Leonardo1.mp4')  # 0 tu propia camara, #1 camara remota, path.mp4
 
 
 face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml')
@@ -36,7 +36,7 @@ while True:
     cv2.imshow('frame', frame) # Mostramos ventana
     key = cv2.waitKey(1)
 
-    if key == ord('s') or key == 27 or count >= 300:
+    if key == ord('s') or key == 27 or count >= 600:
         break
 
 capture.release()
