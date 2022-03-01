@@ -17,6 +17,7 @@ face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml'
 
 def face_rec():
     aux = 0
+    flag = 0
     capture = cv2.VideoCapture(0)
     while True:
         comp, frame = capture.read()
@@ -36,23 +37,32 @@ def face_rec():
 
             # LBPHFace
             if result[1] < 76:
+                #reconoce
                 cv2.putText(frame, f'{image_paths[result[0]]}', (x, y-25), 2, 0.8, (0, 255, 0),1 ,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
 
             else:
+                #no reconoce
                 thread_alarm(0, 'Desconocido', aux)
                 cv2.putText(frame, 'Desconocido', (x, y-20), 2, 0.8, (0, 0, 255), 1,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
                 aux += 1
+        flag += 1
         cv2.imshow('frame',frame)
         key = cv2.waitKey(1)
+        #tiempo de reconocimiento
+        if flag == 100:
+            break
 
         if key == ord('s'):
             sub.call(f'taskkill /IM python.exe /F', shell = True)
             break
             cap.release()
             cv2.destroyAllWindows()
-
+    if aux > 0:
+        return False
+    else:
+        return True
 def alarm(state,name, aux):
     if aux % 5==0:
         if state ==0:
