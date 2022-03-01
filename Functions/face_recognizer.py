@@ -15,7 +15,7 @@ face_recognizer.read('Files/LBPHFaceModel.xml')
 face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml')
 
 
-def face_rec(state):
+def face_rec():
     aux = 0
     capture = cv2.VideoCapture(0)
     while True:
@@ -53,7 +53,7 @@ def face_rec(state):
             cap.release()
             cv2.destroyAllWindows()
 
-def alarm(state, name, aux):
+def alarm(state,name, aux):
     if aux % 5==0:
         if state ==0:
             Telegram_Alert('Desconocido')
@@ -64,4 +64,4 @@ def thread_alarm(state, name, aux):
     ta = tr.Thread(target=alarm, args=(state, name, aux,))
     ta.start()
 
-face_rec(0)
+face_rec()
