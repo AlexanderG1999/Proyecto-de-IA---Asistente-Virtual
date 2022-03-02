@@ -70,7 +70,7 @@ class MiApp(QtWidgets.QMainWindow):
         self.ui.pushButton_NewRostro.clicked.connect(self.newFace)
 
     def newEmail(self):
-        email = self.ui.lineEdit_NewMail.text()
+        email = self.ui.lineEdit_NewMail.text().rstrip()
         cmd = ['hostname']
         shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
         hostname = (shell_cmd.stdout).rstrip()
@@ -86,7 +86,7 @@ class MiApp(QtWidgets.QMainWindow):
         self.ui.lineEdit_NewMail.setText("")
 
     def newProgram(self):
-        program = self.ui.lineEdit_NewProgram.text()
+        program = self.ui.lineEdit_NewProgram.text().rstrip()
         cmd = ['hostname']
         shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
         hostname = (shell_cmd.stdout).rstrip()
@@ -104,6 +104,7 @@ class MiApp(QtWidgets.QMainWindow):
     def newFace(self):
         path = self.ui.lineEdit_NewProgram_Texto.text()
         faceCapture(path)
+        talk("Nuevo rostro agregado con éxito", engine)
         self.ui.lineEdit_NewProgram_Texto.setText("")
 
     def control_bt_minimizar(self):

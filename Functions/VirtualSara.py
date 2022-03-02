@@ -11,7 +11,7 @@ from Functions.sendMail import sendMail
 
 def escribirArchivo(cadena, rutaArchivo):
     archivo = open(rutaArchivo, "a")
-    archivo.write(cadena+"\n")
+    archivo.write(cadena+'\n')
     archivo.close()
 
 

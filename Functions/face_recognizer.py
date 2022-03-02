@@ -3,7 +3,7 @@ import os
 import threading as tr
 import subprocess as sub
 import imutils
-from sendMssTelegram import Telegram_Alert
+from Functions.sendMssTelegram import Telegram_Alert
 
 data_path = 'Data_face'
 image_paths = os.listdir(data_path)

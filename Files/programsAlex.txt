@@ -3,14 +3,3 @@ word: C:/Program Files/Microsoft Office/root/Office16/WINWORD.EXE
 onenote: C:/Program Files/Microsoft Office/root/Office16/ONENOTE.EXE
 excel: C:/Program Files/Microsoft Office/root/Office16/EXCEL.EXE
 whatsapp: C:/Users/alexa/AppData/Local/WhatsApp/WhatsApp.exe
-visual: C:/Users/alexa/AppData/Local/Programs/Microsoft VS Code/Code.exe
-
-
-visual: C:/Users/alexa/AppData/Local/Programs/Microsoft VS Code/Code.exe
-
-visual: C:/Users/alexa/AppData/Local/Programs/Microsoft VS Code/Code.exe
-
-
-visual: C:/Users/alexa/AppData/Local/Programs/Microsoft VS Code/Code.exe
-
-
