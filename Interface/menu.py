@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Interface/menu.ui'
+# Form implementation generated from reading ui file 'menu.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QMovie
+
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -271,17 +273,8 @@ class Ui_MainWindow(object):
         self.label.setIndent(0)
         self.label.setObjectName("label")
         self.verticalLayout_9.addWidget(self.label)
-        '''self.lineEdit_textAV = QtWidgets.QLineEdit(self.page)
-        self.lineEdit_textAV.setGeometry(QtCore.QRect(170, 100, 250, 41))
-        self.lineEdit_textAV.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.lineEdit_textAV.setStyleSheet("color: rgb(255, 0, 0);\n"
-"background-color: rgb(128, 128, 128);")
-        self.lineEdit_textAV.setAlignment(QtCore.Qt.AlignCenter)
-        self.lineEdit_textAV.setObjectName("lineEdit_textAV")
-        self.verticalLayout_9.addWidget(self.lineEdit_textAV)'''
         self.stackedWidget.addWidget(self.page)
         self.page_uno = QtWidgets.QWidget()
-        self.page_uno.setStyleSheet("background-color: rgb(0, 0, 0);")
         self.page_uno.setObjectName("page_uno")
         self.lineEdit = QtWidgets.QLineEdit(self.page_uno)
         self.lineEdit.setGeometry(QtCore.QRect(170, 100, 250, 41))
@@ -355,9 +348,26 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_dos)
         self.page_tres = QtWidgets.QWidget()
         self.page_tres.setObjectName("page_tres")
-        self.pushButton_NewFaVidComp = QtWidgets.QPushButton(self.page_tres)
-        self.pushButton_NewFaVidComp.setGeometry(QtCore.QRect(90, 130, 400, 41))
-        self.pushButton_NewFaVidComp.setStyleSheet("QPushButton{\n"
+        self.lineEdit_NuevoRostro = QtWidgets.QLineEdit(self.page_tres)
+        self.lineEdit_NuevoRostro.setGeometry(QtCore.QRect(35, 100, 500, 41))
+        self.lineEdit_NuevoRostro.setStyleSheet("font: 87 16pt \"Arial Black\";\n"
+"background-color: rgb(0, 0, 0);\n"
+"color: rgb(255, 255, 255);\n"
+"border:None;")
+        self.lineEdit_NuevoRostro.setAlignment(QtCore.Qt.AlignCenter)
+        self.lineEdit_NuevoRostro.setObjectName("lineEdit_NuevoRostro")
+        self.lineEdit_NewProgram_Texto = QtWidgets.QLineEdit(self.page_tres)
+        self.lineEdit_NewProgram_Texto.setGeometry(QtCore.QRect(90, 180, 391, 51))
+        self.lineEdit_NewProgram_Texto.setStyleSheet("color: rgb(255, 255, 255);\n"
+"font: 14pt \"Arial\";\n"
+"background-color: rgb(128, 128, 128);\n"
+"border-radius:10px;\n"
+"border:None;")
+        self.lineEdit_NewProgram_Texto.setAlignment(QtCore.Qt.AlignCenter)
+        self.lineEdit_NewProgram_Texto.setObjectName("lineEdit_NewProgram_Texto")
+        self.pushButton_NewRostro = QtWidgets.QPushButton(self.page_tres)
+        self.pushButton_NewRostro.setGeometry(QtCore.QRect(200, 300, 171, 31))
+        self.pushButton_NewRostro.setStyleSheet("QPushButton{\n"
 "font: 87 16pt \"Arial Black\";\n"
 "background-color: rgb(128, 128, 128);\n"
 "color: rgb(255, 255, 255);\n"
@@ -370,23 +380,7 @@ class Ui_MainWindow(object):
 "background-color:green;\n"
 "\n"
 "}")
-        self.pushButton_NewFaVidComp.setObjectName("pushButton_NewFaVidComp")
-        self.pushButton_NewFacCamComp = QtWidgets.QPushButton(self.page_tres)
-        self.pushButton_NewFacCamComp.setGeometry(QtCore.QRect(90, 270, 400, 41))
-        self.pushButton_NewFacCamComp.setStyleSheet("QPushButton{\n"
-"font: 87 16pt \"Arial Black\";\n"
-"background-color: rgb(128, 128, 128);\n"
-"color: rgb(255, 255, 255);\n"
-"border:None;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:hover{\n"
-"border:5px solid #C0C0C0;\n"
-"background-color:green;\n"
-"\n"
-"}")
-        self.pushButton_NewFacCamComp.setObjectName("pushButton_NewFacCamComp")
+        self.pushButton_NewRostro.setObjectName("pushButton_NewRostro")
         self.stackedWidget.addWidget(self.page_tres)
         self.verticalLayout_3.addWidget(self.stackedWidget)
         self.horizontalLayout.addWidget(self.frame_contenedor)
@@ -407,13 +401,14 @@ class Ui_MainWindow(object):
         self.bt_tres.setText(_translate("MainWindow", "   AGREGAR ROSTRO"))
         self.label_2.setText(_translate("MainWindow", "SARA"))
         self.lineEdit.setText(_translate("MainWindow", "NUEVO PROGRAMA"))
-        self.lineEdit_NewProgram.setPlaceholderText(_translate("MainWindow", "Nombre programa: Ruta del programa"))
+        self.lineEdit_NewProgram.setPlaceholderText(_translate("MainWindow", "Ingrese la ruta del programa"))
         self.pushButton_NewProg.setText(_translate("MainWindow", "ACEPTAR"))
         self.lineEdit_3.setText(_translate("MainWindow", "NUEVO EMAIL"))
-        self.lineEdit_NewMail.setPlaceholderText(_translate("MainWindow", "Nombre: e-mail"))
+        self.lineEdit_NewMail.setPlaceholderText(_translate("MainWindow", "Ingrese el nuevo e-mail"))
         self.pushButton_NewMail.setText(_translate("MainWindow", "ACEPTAR"))
-        self.pushButton_NewFaVidComp.setText(_translate("MainWindow", "VIDEO DESDE EL COMPUTADOR"))
-        self.pushButton_NewFacCamComp.setText(_translate("MainWindow", "CÁMARA DEL COMPUTADOR"))
+        self.lineEdit_NuevoRostro.setText(_translate("MainWindow", "NUEVO ROSTRO DESDE EL COMPUTADOR"))
+        self.lineEdit_NewProgram_Texto.setPlaceholderText(_translate("MainWindow", "Ingrese la ruta del video"))
+        self.pushButton_NewRostro.setText(_translate("MainWindow", "ACEPTAR"))
 
 
 if __name__ == "__main__":

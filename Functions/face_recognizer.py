@@ -3,7 +3,7 @@ import os
 import threading as tr
 import subprocess as sub
 import imutils
-from Functions.sendMssTelegram import Telegram_Alert
+from sendMssTelegram import Telegram_Alert
 
 data_path = 'Data_face'
 image_paths = os.listdir(data_path)
@@ -16,9 +16,10 @@ face_classif = cv2.CascadeClassifier('Files/haarcascade_frontalface_default.xml'
 
 
 def face_rec():
-    aux = 0
+    auxBad = 0
+    auxGood = 0
     flag = 0
-    capture = cv2.VideoCapture('Videos/Alexander.mp4')
+    capture = cv2.VideoCapture(0) #0 Camara
     while True:
         comp, frame = capture.read()
         if comp == False: break
@@ -40,13 +41,14 @@ def face_rec():
                 #reconoce
                 cv2.putText(frame, f'{image_paths[result[0]]}', (x, y-25), 2, 0.8, (0, 255, 0),1 ,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                auxGood += 1
 
             else:
                 #no reconoce
-                thread_alarm(0, 'Desconocido', aux)
+                thread_alarm(0, 'Desconocido', auxBad)
                 cv2.putText(frame, 'Desconocido', (x, y-20), 2, 0.8, (0, 0, 255), 1,cv2.LINE_AA)
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-                aux += 1
+                auxBad += 1
         flag += 1
         cv2.imshow('frame',frame)
         key = cv2.waitKey(1)
@@ -63,7 +65,7 @@ def face_rec():
             cap.release()
             cv2.destroyAllWindows()
     
-    if aux > 0:
+    if auxBad > auxGood:
         return False
     else:
         return True
@@ -78,3 +80,5 @@ def alarm(state,name, aux):
 def thread_alarm(state, name, aux):
     ta = tr.Thread(target=alarm, args=(state, name, aux,))
     ta.start()
+
+#face_rec()

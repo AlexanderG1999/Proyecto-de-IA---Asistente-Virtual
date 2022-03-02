@@ -23,3 +23,7 @@ pip install opencv-contrib-python
 -- Librerias Interfaz
 pip install PyQt5
 https://build-system.fman.io/qt-designer-download
+
+NOTAS:
+    - Eliminar token.piclke en el caso de que se ingrese un nuevo correo para realizar el proceso de
+    calendario. 

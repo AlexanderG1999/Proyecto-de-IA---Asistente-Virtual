@@ -12,6 +12,7 @@ from Functions.VirtualSara import runSara, escribirArchivo
 from Functions.listener import listen
 from Functions.talker import talk
 from Functions.face_recognizer import face_rec
+from Functions.face_capture import faceCapture
 
 name = 'sara'
 engine = pyttsx3.init()  # Transforma texto a voz
@@ -26,7 +27,7 @@ class MiApp(QtWidgets.QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-		#Threads para ejecutar runSara() al mismo tiempo que la interfaz
+        # Threads para ejecutar runSara() al mismo tiempo que la interfaz
         sara = Thread(target=runSara, args=(name, engine))
         sara.start()
 
@@ -66,6 +67,7 @@ class MiApp(QtWidgets.QMainWindow):
         # Control botones nuevo email y programa
         self.ui.pushButton_NewMail.clicked.connect(self.newEmail)
         self.ui.pushButton_NewProg.clicked.connect(self.newProgram)
+        self.ui.pushButton_NewRostro.clicked.connect(self.newFace)
 
     def newEmail(self):
         email = self.ui.lineEdit_NewMail.text()
@@ -73,14 +75,15 @@ class MiApp(QtWidgets.QMainWindow):
         shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
         hostname = (shell_cmd.stdout).rstrip()
 
-        if hostname == "ALEXANDER": #Computadora Alexander
+        if hostname == "ALEXANDER":  # Computadora Alexander
             archivo = "Files/emailsAlex.txt"
-        else: #Computadora Leo
+        else:  # Computadora Leo
             archivo = "Files/emailsLeo.txt"
 
         escribirArchivo(email, archivo)
 
         talk("Nuevo email agregado con éxito", engine)
+        self.ui.lineEdit_NewMail.setText("")
 
     def newProgram(self):
         program = self.ui.lineEdit_NewProgram.text()
@@ -88,14 +91,20 @@ class MiApp(QtWidgets.QMainWindow):
         shell_cmd = subprocess.run((cmd), capture_output=True, text=True)
         hostname = (shell_cmd.stdout).rstrip()
 
-        if hostname == "ALEXANDER": #Computadora Alexander
+        if hostname == "ALEXANDER":  # Computadora Alexander
             archivo = "Files/programsAlex.txt"
-        else: #Computadora Leo
+        else:  # Computadora Leo
             archivo = "Files/programsLeo.txt"
 
         escribirArchivo(program, archivo)
 
         talk("Nuevo programa agregado con éxito", engine)
+        self.ui.lineEdit_NewProgram.setText("")
+    
+    def newFace(self):
+        path = self.ui.lineEdit_NewProgram_Texto.text()
+        faceCapture(path)
+        self.ui.lineEdit_NewProgram_Texto.setText("")
 
     def control_bt_minimizar(self):
         self.showMinimized()
@@ -113,11 +122,6 @@ class MiApp(QtWidgets.QMainWindow):
         self.ui.lineEdit_3.setGeometry(QtCore.QRect(170, 100, 250, 41))
         self.ui.lineEdit_NewMail.setGeometry(QtCore.QRect(100, 190, 391, 51))
         self.ui.pushButton_NewMail.setGeometry(QtCore.QRect(210, 310, 171, 31))
-        # Page_Tres
-        self.ui.pushButton_NewFaVidComp.setGeometry(
-            QtCore.QRect(90, 130, 400, 41))
-        self.ui.pushButton_NewFacCamComp.setGeometry(
-            QtCore.QRect(90, 270, 400, 41))
 
     def control_bt_maximizar(self):
         self.showMaximized()
@@ -137,12 +141,6 @@ class MiApp(QtWidgets.QMainWindow):
             QtCore.QRect(180+extender, 190, 391, 51))
         self.ui.pushButton_NewMail.setGeometry(
             QtCore.QRect(290+extender, 310, 171, 31))
-        # Page_Tres
-        self.ui.pushButton_NewFaVidComp.setGeometry(
-            QtCore.QRect(190+extender, 130, 400, 41))
-        self.ui.pushButton_NewFacCamComp.setGeometry(
-            QtCore.QRect(190+extender, 270, 400, 41))
-        # self.ui.bt_menu.clicked.connect(self.mover_menu2)
 
     def mover_menu(self):
         if True:
@@ -163,10 +161,12 @@ class MiApp(QtWidgets.QMainWindow):
                 self.ui.pushButton_NewMail.setGeometry(
                     QtCore.QRect(210, 310, 171, 31))
                 # Page_Tres
-                self.ui.pushButton_NewFaVidComp.setGeometry(
-                    QtCore.QRect(90, 130, 400, 41))
-                self.ui.pushButton_NewFacCamComp.setGeometry(
-                    QtCore.QRect(90, 270, 400, 41))
+                self.ui.lineEdit_NuevoRostro.setGeometry(
+                    QtCore.QRect(35, 100, 500, 41))
+                self.ui.lineEdit_NewProgram_Texto.setGeometry(
+                    QtCore.QRect(90, 180, 391, 51))
+                self.ui.pushButton_NewRostro.setGeometry(
+                    QtCore.QRect(200, 300, 171, 31))
 
             else:
                 extender = normal
@@ -185,67 +185,12 @@ class MiApp(QtWidgets.QMainWindow):
                 self.ui.pushButton_NewMail.setGeometry(
                     QtCore.QRect(290+extender, 310, 171, 31))
                 # Page_Tres
-                self.ui.pushButton_NewFaVidComp.setGeometry(
-                    QtCore.QRect(190+extender, 130, 400, 41))
-                self.ui.pushButton_NewFacCamComp.setGeometry(
-                    QtCore.QRect(190+extender, 270, 400, 41))
-
-            self.animacion = QPropertyAnimation(
-                self.ui.frame_lateral, b'minimumWidth')
-            self.animacion.setDuration(300)
-            self.animacion.setStartValue(width)
-            self.animacion.setEndValue(extender)
-            self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
-            self.animacion.start()
-
-    def mover_menu2(self):
-        if True:
-            width = self.ui.frame_lateral.width()
-            normal = 0
-            if width == 0:
-                extender = 200
-                auxWidth = int((756-self.ui.page_uno.width())/5)+50
-                # Page_Uno
-                self.ui.lineEdit.setGeometry(
-                    QtCore.QRect(250+auxWidth, 100, 250, 41))
-                self.ui.lineEdit_NewProgram.setGeometry(
-                    QtCore.QRect(180+auxWidth, 180, 391, 51))
-                self.ui.pushButton_NewProg.setGeometry(
-                    QtCore.QRect(290+auxWidth, 300, 171, 31))
-                # Page_Dos
-                self.ui.lineEdit_3.setGeometry(
-                    QtCore.QRect(250+auxWidth, 100, 250, 41))
-                self.ui.lineEdit_NewMail.setGeometry(
-                    QtCore.QRect(180+auxWidth, 190, 391, 51))
-                self.ui.pushButton_NewMail.setGeometry(
-                    QtCore.QRect(290+auxWidth, 310, 171, 31))
-                # Page_Tres
-                self.ui.pushButton_NewFaVidComp.setGeometry(
-                    QtCore.QRect(190+auxWidth, 130, 400, 41))
-                self.ui.pushButton_NewFacCamComp.setGeometry(
-                    QtCore.QRect(190+auxWidth, 270, 400, 41))
-
-            else:
-                extender = normal
-                # Page_Uno
-                self.ui.lineEdit.setGeometry(
-                    QtCore.QRect(250+extender, 100, 250, 41))
-                self.ui.lineEdit_NewProgram.setGeometry(
+                self.ui.lineEdit_NuevoRostro.setGeometry(
+                    QtCore.QRect(120+extender, 100, 500, 41))
+                self.ui.lineEdit_NewProgram_Texto.setGeometry(
                     QtCore.QRect(180+extender, 180, 391, 51))
-                self.ui.pushButton_NewProg.setGeometry(
+                self.ui.pushButton_NewRostro.setGeometry(
                     QtCore.QRect(290+extender, 300, 171, 31))
-                # Page_Dos
-                self.ui.lineEdit_3.setGeometry(
-                    QtCore.QRect(250+extender, 100, 250, 41))
-                self.ui.lineEdit_NewMail.setGeometry(
-                    QtCore.QRect(180+extender, 190, 391, 51))
-                self.ui.pushButton_NewMail.setGeometry(
-                    QtCore.QRect(290+extender, 310, 171, 31))
-                # Page_Tres
-                self.ui.pushButton_NewFaVidComp.setGeometry(
-                    QtCore.QRect(190+extender, 130, 400, 41))
-                self.ui.pushButton_NewFacCamComp.setGeometry(
-                    QtCore.QRect(190+extender, 270, 400, 41))
 
             self.animacion = QPropertyAnimation(
                 self.ui.frame_lateral, b'minimumWidth')
@@ -279,7 +224,7 @@ class MiApp(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    
+
     if face_rec() == True:
         app = QtWidgets.QApplication(sys.argv)
         mi_app = MiApp()

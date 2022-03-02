@@ -581,7 +581,7 @@ font: 75 12pt &quot;Arial Narrow&quot;;
              <number>0</number>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>3</number>
             </property>
             <widget class="QWidget" name="page">
              <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -777,41 +777,58 @@ background-color:green;
              </widget>
             </widget>
             <widget class="QWidget" name="page_tres">
-             <widget class="QPushButton" name="pushButton_NewFaVidComp">
+             <widget class="QLineEdit" name="lineEdit_NuevoRostro">
               <property name="geometry">
                <rect>
-                <x>110</x>
-                <y>130</y>
-                <width>311</width>
+                <x>50</x>
+                <y>80</y>
+                <width>441</width>
                 <height>41</height>
                </rect>
               </property>
               <property name="styleSheet">
-               <string notr="true">QPushButton{
-font: 87 16pt &quot;Arial Black&quot;;
-background-color: rgb(128, 128, 128);
+               <string notr="true">font: 87 16pt &quot;Arial Black&quot;;
+background-color: rgb(0, 0, 0);
 color: rgb(255, 255, 255);
-border:None;
-
-}
-
-QPushButton:hover{
-border:5px solid #C0C0C0;
-background-color:green;
-
-}</string>
+border:None;</string>
               </property>
               <property name="text">
-               <string>VIDEO DESDE EL COMPUTADOR</string>
+               <string>NUEVO ROSTRO DESDE EL COMPUTADOR</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
               </property>
              </widget>
-             <widget class="QPushButton" name="pushButton_NewFacCamComp">
+             <widget class="QLineEdit" name="lineEdit_NewProgram_Texto">
               <property name="geometry">
                <rect>
-                <x>110</x>
-                <y>270</y>
-                <width>311</width>
-                <height>41</height>
+                <x>80</x>
+                <y>180</y>
+                <width>391</width>
+                <height>51</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">color: rgb(255, 255, 255);
+font: 14pt &quot;Arial&quot;;
+background-color: rgb(128, 128, 128);
+border-radius:10px;
+border:None;</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="placeholderText">
+               <string>Ingrese la ruta del video</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_NewRostro">
+              <property name="geometry">
+               <rect>
+                <x>180</x>
+                <y>300</y>
+                <width>171</width>
+                <height>31</height>
                </rect>
               </property>
               <property name="styleSheet">
@@ -830,7 +847,7 @@ background-color:green;
 }</string>
               </property>
               <property name="text">
-               <string>CÁMARA DEL COMPUTADOR</string>
+               <string>ACEPTAR</string>
               </property>
              </widget>
             </widget>
